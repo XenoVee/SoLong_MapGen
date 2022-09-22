@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/21 20:01:05 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/22 17:49:56 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char			*ft_map_malloc(unsigned long count, unsigned long size);
 char			**ft_create_map(t_params *params);
 void			*free_map(char **map, int malloced);
 void			ft_print_map(char **map);
-void			ft_fill_map(char **map);
+void			ft_fill_map(char **map, t_params *params);
 unsigned long	ft_seedconv(char *str);
 void			ft_parse_args(int argc, char **argv, t_params *params);
 void			ft_setup_params(int argc, char **argv, t_params *params);

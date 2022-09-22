@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:26:14 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/21 20:27:55 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/22 18:05:15 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,24 @@ void	ft_setempty(char *mapx, int y)
 	}
 }
 
-char	**ft_create_map(t_params *params)
+char	**ft_create_map(t_params *prms)
 {
 	char	**map;
 	int		i;
 
 	i = 0;
-	map = malloc((params->x + 1) * sizeof(char *));
+	map = malloc((prms->x + 1) * sizeof(char *));
 	if (map == NULL)
 		return (NULL);
-	while (i < params->x)
+	while (i < prms->x)
 	{
-		map[i] = ft_map_malloc(params->y + 1, sizeof(char));
+		map[i] = ft_map_malloc(prms->y + 1, sizeof(char));
 		if (map == NULL)
 		{
 			free_map(map, i);
 			return (NULL);
 		}
-		ft_setempty(map[i], params->y);
+		ft_setempty(map[i], prms->y);
 		i++;
 	}
 	map[i] = NULL;
