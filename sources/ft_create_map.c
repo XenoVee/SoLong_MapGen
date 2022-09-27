@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:26:14 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/22 18:05:15 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/22 19:18:07 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_setempty(char *mapx, int y)
 	iy = 0;
 	while (iy < y)
 	{
-		mapx[iy] = '0';
+		mapx[iy] = ' ';
 		iy++;
 	}
 }

@@ -6,12 +6,17 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 16:03:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/22 18:07:04 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/27 19:22:21 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mapgen.h"
 #include <time.h>
+
+int	sizecalc(int x, int y)
+{
+	return (ft_min((x + y) / 2, ft_min(x, y) + (ft_min(x, y) / 2)));
+}
 
 void	ft_parse_args(int argc, char **argv, t_params *prms)
 {
@@ -32,9 +37,6 @@ void	ft_parse_args(int argc, char **argv, t_params *prms)
 
 void	ft_setup_params(int argc, char **argv, t_params *prms)
 {
-	prms->y = 0;
-	prms->x = 0;
-	prms->seed = 0;
 	if (argc == 2)
 		prms->seed = ft_seedconv(argv[1]);
 	if (argc > 2)
@@ -46,5 +48,7 @@ void	ft_setup_params(int argc, char **argv, t_params *prms)
 		prms->x = rand() % 20 + 10;
 	if (prms->y == 0)
 		prms->y = rand() % 20 + 10;
+	prms->size = sizecalc(prms->x, prms->y);
+	printf("seed: %lu\n", prms->seed);
 	return ;
 }
