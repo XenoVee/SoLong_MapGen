@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/22 22:24:51 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/27 22:37:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ unsigned long	ft_seedconv(char *str);
 void			ft_parse_args(int argc, char **argv, t_params *prms);
 void			ft_setup_params(int argc, char **argv, t_params *prms);
 void			ft_rooms(char **map, t_params *prms, unsigned int nrooms);
-void			ft_make_room(unsigned int room[2][2], t_params *prms);
+void			ft_generate_room(unsigned int room[2][2], t_params *prms);
 void			ft_draw_room(unsigned int room[2][2], char **map,
 					t_params *prms);
 int				ft_minimum(int n, int c);
 int				ft_min(int n, int c);
 int				ft_max(int n, int c);
-
+void			ft_generate_door(unsigned int door[1], unsigned int room[2][2],
+					unsigned int width, unsigned int height);
 #endif
