@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/27 22:37:05 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/28 16:34:36 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,6 @@ int				ft_min(int n, int c);
 int				ft_max(int n, int c);
 void			ft_generate_door(unsigned int door[1], unsigned int room[2][2],
 					unsigned int width, unsigned int height);
+void			ft_draw_door(char **map, unsigned int room[2][2]);
+
 #endif

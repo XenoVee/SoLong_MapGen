@@ -1,16 +1,16 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rmaes <rmaes@student.codam.nl>             +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/01 13:10:16 by rmaes             #+#    #+#              #
-#    Updated: 2022/09/19 19:25:29 by rmaes            ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: rmaes <rmaes@student.codam.nl>               +#+                      #
+#                                                    +#+                       #
+#    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
+#    Updated: 2022/09/28 16:21:48 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES = sources/*.c
+SOURCES = sources/*.c sources/*/*.c
 OBJECTS = $(SOURCES:.c=.o)
 HEADER = mapgen.h
 CFLAGS = -Wall -Wextra -Werror

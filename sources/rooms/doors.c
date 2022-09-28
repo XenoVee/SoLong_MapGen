@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   rooms_generate.c                                   :+:    :+:            */
+/*   doors.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/27 22:33:38 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/27 22:36:36 by rmaes         ########   odam.nl         */
+/*   Created: 2022/09/28 16:33:51 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/09/28 16:35:49 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mapgen.h"
+#include "../../mapgen.h"
 
 void	ft_generate_door(unsigned int door[1], unsigned int room[2][2]
 	, unsigned int width, unsigned int height)
@@ -40,24 +40,20 @@ void	ft_generate_door(unsigned int door[1], unsigned int room[2][2]
 	}
 }
 
-// room[][] syntax: room[coords 0/ coords 1][x/ y]
-// with coord 0 being the top left and coord 1 being the bottom right corner
-// and with x coords being 0 and y coords being 1
-// roomsize: [0] = north wall distance from mid point, [1] is east wall,
-// [2] is west wall, [3] is south wall
-void	ft_generate_room(unsigned int room[2][2], t_params *prms)
+void	ft_draw_door(char **map, unsigned int room[2][2])
 {
-	unsigned int	roomsize[4];
-	unsigned int	mid[2];
+	unsigned int	door[2];
+	unsigned int	loc;
+	unsigned int	width;
+	unsigned int	height;
 
-	mid[0] = 4 + rand() % (prms->x - 8);
-	mid[1] = 4 + rand() % (prms->y - 8);
-	roomsize[0] = ft_min(1 + rand() % (mid[0] - 1), prms->x / 8);
-	roomsize[1] = ft_min(1 + rand() % (mid[1] - 1), prms->y / 8);
-	roomsize[2] = ft_min(1 + rand() % (prms->x - mid[0] - 1), prms->x / 8);
-	roomsize[3] = ft_min(1 + rand() % (prms->y - mid[1] - 1), prms->y / 8);
-	room[0][0] = mid[0] - roomsize[0];
-	room[0][1] = mid[1] - roomsize[1];
-	room[1][0] = mid[0] + roomsize[2];
-	room[1][1] = mid[1] + roomsize[3];
+	width = room[1][0] - room[0][0];
+	height = room[1][1] - room[0][1];
+	while (width != 0)
+	{
+		ft_generate_door(door, room, width, height);
+		if (map[door[0]][door[1]] == '1')
+			width = 0;
+	}
+	map[door[0]][door[1]] = 'T';
 }
