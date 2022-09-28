@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:43:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/27 16:52:48 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/09/28 17:10:07 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	ft_fill_map(char **map, t_params *prms)
 
 	avg = (prms->x + prms->y) / 2;
 	ft_outer_walls(map);
-	ft_rooms(map, prms, rand() % ft_max(avg / 4, 0));
+	ft_rooms(map, prms, rand() % ft_max(avg / 4, 1));
 	ft_cleanup(map);
 }
