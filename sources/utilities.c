@@ -6,23 +6,23 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/20 16:26:45 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/09/22 22:23:34 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/03 17:38:29 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mapgen.h"
 
-void	*free_map(char **map, int malloced)
+void	*free_map(t_params *prms, int malloced)
 {
 	int	i;
 
 	i = 0;
 	while (i < malloced)
 	{
-		free(map[i]);
+		free(prms->map[i]);
 		i++;
 	}
-	free(map);
+	free(prms->map);
 	return (NULL);
 }
 
