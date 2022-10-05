@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilities.c                                        :+:    :+:            */
+/*   ft_max.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/20 16:26:45 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/04 18:03:43 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/04 18:03:31 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/04 18:04:06 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mapgen.h"
-
-void	*free_map(t_params *prms, int malloced)
+// make sure n is at least d - return largest
+int	ft_max(int n, int d)
 {
-	int	i;
-
-	i = 0;
-	while (i < malloced)
-	{
-		free(prms->map[i]);
-		i++;
-	}
-	free(prms->map);
-	return (NULL);
+	if (n < d)
+		return (d);
+	return (n);
 }

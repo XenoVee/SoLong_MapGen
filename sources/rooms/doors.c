@@ -6,13 +6,13 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/28 16:33:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/03 17:34:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/04 17:31:24 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mapgen.h"
 
-void	ft_generate_door(unsigned int door[2], unsigned int room[2][2]
+static void	ft_generate_door(unsigned int door[2], unsigned int room[2][2]
 	, unsigned int width, unsigned int height)
 {
 	unsigned int	loc;
@@ -40,6 +40,45 @@ void	ft_generate_door(unsigned int door[2], unsigned int room[2][2]
 	}
 }
 
+static int	ft_door_valid(t_params *prms, unsigned int room[2][2],
+	unsigned int door[2])
+{
+	int	t;
+
+	t = 0;
+	if (prms->map[door[0]][door[1]] == '1')
+	{
+		if (prms->map[door[0] + 1][door[1]] == '1')
+			t++;
+		if (prms->map[door[0] - 1][door[1]] == '1')
+			t++;
+		if (prms->map[door[0]][door[1] + 1] == '1')
+			t++;
+		if (prms->map[door[0]][door[1] - 1] == '1')
+			t++;
+	}
+	if (t == 2)
+		return (1);
+	return (0);
+}
+
+static void	ft_put_door(t_params *prms, unsigned int room[2][2],
+	unsigned int door[2])
+{
+	int	i;
+
+	i = -1;
+	prms->map[door[0]][door[1]] = 'T';
+	while (i < 2)
+	{
+		if (prms->map[door[0] + i][door[1]] == '0')
+			prms->map[door[0] + i][door[1]] = 'T';
+		if (prms->map[door[0]][door[1] + i] == '0')
+			prms->map[door[0]][door[1] + i] = 'T';
+		i++;
+	}
+}
+
 void	ft_draw_door(t_params *prms, unsigned int room[2][2])
 {
 	unsigned int	door[2];
@@ -52,9 +91,9 @@ void	ft_draw_door(t_params *prms, unsigned int room[2][2])
 	while (width != 0)
 	{
 		ft_generate_door(door, room, width, height);
-		if (prms->map[door[0]][door[1]] == '1')
+		if (ft_door_valid(prms, room, door) == 1)
 		{
-			prms->map[door[0]][door[1]] = 'D';
+			ft_put_door(prms, room, door);
 			width = 0;
 		}
 	}

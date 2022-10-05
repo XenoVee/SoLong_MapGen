@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilities.c                                        :+:    :+:            */
+/*   ft_btw.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/20 16:26:45 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/04 18:03:43 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/04 18:03:51 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/04 18:04:01 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mapgen.h"
+#include "libft.h"
 
-void	*free_map(t_params *prms, int malloced)
+// make sure n is between d and i
+int	ft_btw(int n, int d, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i < malloced)
-	{
-		free(prms->map[i]);
-		i++;
-	}
-	free(prms->map);
-	return (NULL);
+	return (ft_min(ft_max(n, i), d));
 }

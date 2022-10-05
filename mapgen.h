@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/03 17:39:01 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/04 18:05:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ void			ft_rooms(t_params *prms, unsigned int nrooms);
 void			ft_generate_room(unsigned int room[2][2], t_params *prms);
 void			ft_draw_room(unsigned int room[2][2], t_params *prms);
 int				ft_minimum(int n, int c);
-int				ft_min(int n, int c);
-int				ft_max(int n, int c);
-void			ft_generate_door(unsigned int door[1], unsigned int room[2][2],
-					unsigned int width, unsigned int height);
 void			ft_draw_door(t_params *prms, unsigned int room[2][2]);
-
+int				chckx(t_params *prms, unsigned int ix,
+					unsigned int iy, int mod);
+int				chcky(t_params *prms, unsigned int ix,
+					unsigned int iy, int mod);
 #endif

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:43:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/03 17:31:10 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/04 17:26:06 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	ft_cleanup(t_params *prms)
 	{
 		while (prms->map[ix][iy])
 		{
-			if (prms->map[ix][iy] == 'D')
-				prms->map[ix][iy] = '0';
 			if (prms->map[ix][iy] == 'T')
 				prms->map[ix][iy] = '0';
 			if (prms->map[ix][iy] == '0')
@@ -67,6 +65,6 @@ void	ft_fill_map(t_params *prms)
 	else if (prms->size < 30)
 		ft_rooms(prms, 2 + rand() % 2);
 	else
-		ft_rooms(prms, 1 + rand() % ft_max(prms->size / 4, 1));
+		ft_rooms(prms, 1 + rand() % ft_min(prms->size / 5, 10));
 	ft_cleanup(prms);
 }

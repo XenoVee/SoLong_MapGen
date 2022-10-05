@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmaes <rmaes@student.codam.nl>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 16:42:35 by rmaes             #+#    #+#             */
-/*   Updated: 2022/06/13 17:19:51 by rmaes            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   libft.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/17 16:42:35 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/04 18:09:42 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int i, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+int				ft_min(int n, int d);
+int				ft_max(int n, int d);
+int				ft_btw(int n, int d, int i);
 
 #endif

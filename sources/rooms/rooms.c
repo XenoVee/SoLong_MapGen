@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/27 22:33:38 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/03 17:59:40 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/04 14:27:41 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	ft_generate_room(unsigned int room[2][2], t_params *prms)
 
 	mid[0] = 4 + rand() % (prms->x - 8);
 	mid[1] = 4 + rand() % (prms->y - 8);
-	roomsize[0] = ft_min(2 + rand() % (mid[0] - 1), prms->x / 8);
-	roomsize[1] = ft_min(2 + rand() % (mid[1] - 1), prms->y / 8);
-	roomsize[2] = ft_min(2 + rand() % (prms->x - mid[0] - 1), prms->x / 8);
-	roomsize[3] = ft_min(2 + rand() % (prms->y - mid[1] - 1), prms->y / 8);
+	roomsize[0] = ft_min(2 + rand() % (mid[0] - 2), prms->x / 8);
+	roomsize[1] = ft_min(2 + rand() % (mid[1] - 2), prms->y / 8);
+	roomsize[2] = ft_min(2 + rand() % (prms->x - mid[0] - 2), prms->x / 8);
+	roomsize[3] = ft_min(2 + rand() % (prms->y - mid[1] - 2), prms->y / 8);
 	room[0][0] = mid[0] - roomsize[0];
 	room[0][1] = mid[1] - roomsize[1];
 	room[1][0] = mid[0] + roomsize[2];
