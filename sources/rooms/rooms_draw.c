@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:53:04 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/04 17:47:10 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/05 16:15:26 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ void	ft_draw_room(unsigned int room[2][2], t_params *prms)
 		else
 			ix++;
 	}
-	ft_confirm_walls(prms);
 	ft_draw_door(prms, room);
+	ft_confirm_walls(prms);
 }

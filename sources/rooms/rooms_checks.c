@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 17:46:54 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/04 17:56:32 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/05 16:36:21 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,45 @@ int	chckx(t_params *prms, unsigned int ix, unsigned int iy, int mod)
 	return (0);
 }
 
-int	check_space(unsigned int room[2][2], t_params *prms)
+static int	check_space_ext(int c, int d,
+	unsigned int room[2][2], t_params *prms)
 {
 	int	ix;
 	int	iy;
-	int	c;
 
-	ix = -2;
 	iy = -2;
-	c = 1;
-	while (c)
+	ix = -2;
+	while (iy < 3)
 	{
-		if (prms->map[ft_min(ft_max(room[0][0], 0), prms->x)]
-			[ft_min(ft_max(room[1][1], 0), prms->y)] == '1')
-			return (0);
+		while (ix < 3)
+		{
+			if (prms->map[ft_btw(room[0 + c][0] + ix, 0, prms->x)]
+					[ft_btw(room[0 + d][1] + iy, 0, prms->y)] == '1')
+				return (0);
+			ix++;
+		}
+		ix = -2;
+		iy++;
 	}
+	return (1);
+}
+
+int	check_space(unsigned int room[2][2], t_params *prms)
+{
+	int	c;
+	int	d;
+
+	c = 0;
+	d = 0;
+	while (c < 2)
+	{
+		while (d < 2)
+		{
+			check_space_ext(c, d, room, prms);
+			d++;
+		}
+		d = 0;
+		c++;
+	}
+	return (1);
 }
