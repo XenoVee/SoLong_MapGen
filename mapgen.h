@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/04 18:05:05 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/05 16:38:24 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ int				chckx(t_params *prms, unsigned int ix,
 					unsigned int iy, int mod);
 int				chcky(t_params *prms, unsigned int ix,
 					unsigned int iy, int mod);
+int				check_space(unsigned int room[2][2], t_params *prms);
 #endif

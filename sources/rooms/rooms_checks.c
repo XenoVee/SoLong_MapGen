@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 17:46:54 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 16:36:21 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/05 17:05:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ static int	check_space_ext(int c, int d,
 	int	ix;
 	int	iy;
 
-	iy = -2;
-	ix = -2;
-	while (iy < 3)
+	iy = -1;
+	ix = -1;
+	while (iy < 2)
 	{
-		while (ix < 3)
+		while (ix < 2)
 		{
-			if (prms->map[ft_btw(room[0 + c][0] + ix, 0, prms->x)]
-					[ft_btw(room[0 + d][1] + iy, 0, prms->y)] == '1')
+			if (prms->map[ft_btw(room[0 + c][0] + ix, prms->x, 0)]
+					[ft_btw(room[0 + d][1] + iy, prms->y, 0)] == '1')
 				return (0);
 			ix++;
 		}
@@ -94,7 +94,8 @@ int	check_space(unsigned int room[2][2], t_params *prms)
 	{
 		while (d < 2)
 		{
-			check_space_ext(c, d, room, prms);
+			if (!check_space_ext(c, d, room, prms))
+				return (0);
 			d++;
 		}
 		d = 0;
