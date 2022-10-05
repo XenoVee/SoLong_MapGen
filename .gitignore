@@ -1,5 +1,6 @@
-# Executable
-mapgen
+todo
+text
+*txt
 
 # Prerequisites
 *.d
@@ -38,6 +39,7 @@ mapgen
 *.i*86
 *.x86_64
 *.hex
+mapgen
 
 # Debug files
 *.dSYM/
