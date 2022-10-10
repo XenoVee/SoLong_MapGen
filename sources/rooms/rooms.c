@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/27 22:33:38 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 18:08:04 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/05 18:30:01 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ void	ft_generate_room(unsigned int room[2][2], t_params *prms)
 
 	mid[0] = 4 + rand() % (prms->x - 8);
 	mid[1] = 4 + rand() % (prms->y - 8);
-	roomsize[0] = ft_min(2 + rand() % (mid[0] - 2), ft_max(prms->x / 8, 2));
-	roomsize[1] = ft_min(2 + rand() % (mid[1] - 2), ft_max(prms->y / 8, 2));
-	roomsize[2] = ft_min(2 + rand() % (prms->x - mid[0] - 2), prms->x / 8);
-	roomsize[3] = ft_min(2 + rand() % (prms->y - mid[1] - 2), prms->y / 8);
+	printf("room mid: %d,%d\n", mid[0], mid[1]);
+	roomsize[0] = ft_btw(rand() % (mid[0]), prms->x / 4, 2);
+	roomsize[1] = ft_btw(rand() % (mid[1]), prms->y / 4, 2);
+	roomsize[2] = ft_btw(rand() % (prms->x - mid[0]), prms->x / 4, 2);
+	roomsize[3] = ft_btw(rand() % (prms->y - mid[1]), prms->y / 4, 2);
 	room[0][0] = mid[0] - roomsize[0];
 	room[0][1] = mid[1] - roomsize[1];
 	room[1][0] = mid[0] + roomsize[2];
@@ -45,16 +46,20 @@ void	ft_rooms(t_params *prms, unsigned int nrooms)
 	iy = 0;
 	while (nrooms > 0)
 	{
-			l = 0;
-		while (l == 0)
+		l = 0;
+		while (l <= 0 && l >= -10)
 		{
 			ft_generate_room(room, prms);
 			if (check_space(room, prms))
-				l++;
+				l = 2;
+			l--;
 		}
-		printf("room %d:  %d,%d - %d,%d\n", nrooms, room[0][0], room[0][1],
-			room[1][0], room[1][1]);
-		ft_draw_room(room, prms);
+		if (l == 1)
+		{
+			printf("room %d:  %d,%d - %d,%d\n", nrooms, room[0][0], room[0][1],
+				room[1][0], room[1][1]);
+			ft_draw_room(room, prms);
+		}
 		nrooms--;
 	}
 }
