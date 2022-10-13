@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 18:03:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 18:10:59 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/10 15:42:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int	ft_btw(int n, int d, int i)
 {
 	if (i < d)
-		return (ft_max(ft_min(n, i), d));
+		return (ft_max(ft_min(n, d), i));
 	else if (i == d)
 		return (d);
-	else if (d < i)
-		return (ft_max(ft_min(n, d), i));
+	else
+		return (ft_max(ft_min(n, i), d));
 }
