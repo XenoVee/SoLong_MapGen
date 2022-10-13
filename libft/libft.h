@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 16:42:35 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/04 18:09:42 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 16:03:08 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int				ft_atoi(const char *str);
 void			*ft_bzero(void *e, size_t len);
 size_t			ft_strlen(const char *s);
 void			*ft_calloc(size_t count, size_t size);
+int				ft_is_atoi(char *s);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);

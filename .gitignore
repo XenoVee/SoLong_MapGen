@@ -48,6 +48,7 @@ mapgen
 *.idb
 *.pdb
 .vscode
+*.tmp
 
 # Kernel Module Compile Results
 *.mod*
