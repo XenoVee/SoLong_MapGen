@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
+/*   ft_ultoa.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 16:41:37 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 16:28:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 17:39:32 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	digitcount(int n)
+static int	digitcount(unsigned long n)
 {
 	int	i;
 
 	i = 0;
-	if (n >= 0)
+	while (n != 0 || i == 0)
 	{
-		while (n != 0 || i == 0)
-		{
-			n = n / 10;
-			i++;
-		}
-		return (i);
-	}
-	else if (n < 0 && n != -2147483648)
-	{
-		n = n * -1;
-		while (n != 0)
-		{
-			n = n / 10;
-			i++;
-		}
+		n = n / 10;
 		i++;
-		return (i);
 	}
-	return (11);
+	return (i);
 }
 
 static char	*swap(char	*d)
@@ -48,8 +33,6 @@ static char	*swap(char	*d)
 	char	tmp;
 
 	i = 0;
-	if (d[0] == '-')
-		i++;
 	ir = ft_strlen(d) - 1;
 	while (i <= ir)
 	{
@@ -62,7 +45,7 @@ static char	*swap(char	*d)
 	return (d);
 }
 
-char	*ft_itoa(int n)
+char	*ft_ultoa(unsigned long n)
 {
 	int		i;
 	char	*ret;
@@ -70,12 +53,7 @@ char	*ft_itoa(int n)
 	i = 0;
 	ret = malloc((digitcount(n) + 1) * sizeof(char));
 	if (!ret)
-		return (0);
-	if (n < 0)
-	{
-		ret[i] = '-';
-		i++;
-	}
+		return (NULL);
 	while (n != 0 || i == 0)
 	{
 		ret[i] = ft_abs((n % 10)) + 48;

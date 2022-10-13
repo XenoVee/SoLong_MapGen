@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmaes <rmaes@student.codam.nl>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 16:41:27 by rmaes             #+#    #+#             */
-/*   Updated: 2022/06/13 17:17:34 by rmaes            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_atoi.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/17 16:41:27 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/13 17:45:39 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	strcmp(const char	*str1, char	*str2)
+static int	atoi_strcmp(const char	*str1, char	*str2)
 {
 	int	i;
 
@@ -37,12 +37,12 @@ static int	max_check(const char *str, int sign)
 		ret = 0;
 	if (sign == 1 && i == 10)
 	{
-		if (strcmp(str, "2147483647") < 0)
+		if (atoi_strcmp(str, "2147483647") < 0)
 			ret = -1;
 	}
 	if (sign == -1 && i == 10)
 	{
-		if (strcmp(str, "2147483648") < 0)
+		if (atoi_strcmp(str, "2147483648") < 0)
 			ret = 0;
 	}
 	return (ret);

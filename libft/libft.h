@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 16:42:35 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 16:03:08 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 17:52:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+int				ft_abs(int n);
 int				ft_atoi(const char *str);
+unsigned long	ft_atoul(const char *str);
 void			*ft_bzero(void *e, size_t len);
 size_t			ft_strlen(const char *s);
 void			*ft_calloc(size_t count, size_t size);
@@ -70,5 +72,6 @@ int				ft_toupper(int c);
 int				ft_min(int n, int d);
 int				ft_max(int n, int d);
 int				ft_btw(int n, int d, int i);
+char			*ft_ultoa(unsigned long n);
 
 #endif

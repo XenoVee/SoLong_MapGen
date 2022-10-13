@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 15:57:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 16:02:45 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 16:09:14 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_is_atoi(char *s)
 	int	i;
 
 	i = 0;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+		i++;
 	if (s[i] == '-' || s[1] == '+')
 		i++;
 	while (s[i])
