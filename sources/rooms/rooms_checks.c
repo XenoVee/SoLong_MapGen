@@ -6,58 +6,75 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 17:46:54 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 17:05:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/12 20:04:40 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mapgen.h"
 
-int	chcky(t_params *prms, unsigned int ix, unsigned int iy, int mod)
+static int	check_wall_2(unsigned int sta[2], unsigned int end[2],
+							t_params *prms, int w)
 {
-	unsigned int	b;
+	unsigned int	i;
 
-	if (iy <= 1 && mod < 0)
-		return (1);
-	iy += mod;
-	if (iy + 1 >= prms->y)
-		return (1);
-	b = 0;
-	if (prms->map[ix][iy] == '1' || prms->map[ix][iy] == 'c'
-		|| prms->map[ix][iy] == 'D')
-			b++;
-	if (prms->map[ix - 1][iy] == '1' || prms->map[ix - 1][iy] == 'D'
-		|| prms->map[ix - 1][iy] == 'c')
-			b++;
-	if (prms->map[ix + 1][iy] == '1' || prms->map[ix + 1][iy] == 'D'
-		|| prms->map[ix + 1][iy] == 'c')
-			b++;
-	if (b > 1)
-		return (1);
+	if (sta[0] != end[0] && sta[1] == end[1])
+	{
+		i = sta[0];
+		while (i < end[0] && prms->map[i][sta[1]] == '0'
+			&& prms->map[i][sta[1] + w] == '0')
+			i++;
+		while (i < end[0]
+			&& (prms->map[i][sta[1]] != '0' || prms->map[i][sta[1] + w] != '0'))
+			i++;
+		if (i < end[0] && prms->map[i][sta[1]] == '0'
+			&& prms->map[i][sta[1] + w] == '0')
+			return (2);
+		else if (i <= end[0] && prms->map[i][sta[1]] != '0'
+			&& prms->map[i][sta[1] + w] != '0')
+			return (1);
+	}
 	return (0);
 }
 
-int	chckx(t_params *prms, unsigned int ix, unsigned int iy, int mod)
+static int	check_wall_1(unsigned int sta[2], unsigned int end[2],
+							t_params *prms, int w)
 {
-	unsigned int	b;
+	unsigned int	i;
 
-	if (ix <= 1 && mod < 0)
-		return (1);
-	ix += mod;
-	if (ix + 1 >= prms->x)
-		return (1);
-	b = 0;
-	if (prms->map[ix][iy] == '1' || prms->map[ix][iy] == 'c'
-		|| prms->map[ix][iy] == 'D')
-			b++;
-	if (prms->map[ix][iy - 1] == '1' || prms->map[ix][iy - 1] == 'D'
-		|| prms->map[ix][iy - 1] == 'c')
-			b++;
-	if (prms->map[ix][iy + 1] == '1' || prms->map[ix][iy + 1] == 'D'
-		|| prms->map[ix][iy + 1] == 'c')
-			b++;
-	if (b > 1)
-		return (1);
+	if (sta[0] == end[0] && sta[1] != end[1])
+	{
+		i = sta[1];
+		while (i < end[1] && prms->map[sta[0]][i] == '0'
+			&& prms->map[sta[0] + w][i] == '0')
+			i++;
+		while (i < end[1]
+			&& (prms->map[sta[0]][i] != '0' || prms->map[sta[0] + w][i] != '0'))
+			i++;
+		if (i < end[1] && prms->map[sta[0]][i] == '0'
+			&& prms->map[sta[0] + w][i] == '0')
+			return (2);
+		else if (i <= end[1] && prms->map[sta[0]][i] != '0'
+			&& prms->map[sta[0] + w][i] != '0')
+			return (1);
+	}
 	return (0);
+}
+
+static int	check_interrupted(unsigned int room[2][2], t_params *prms)
+{
+	unsigned int	ocorner[2][2];
+
+	ocorner[0][0] = room[1][0];
+	ocorner[0][1] = room[0][1];
+	ocorner[1][0] = room[0][0];
+	ocorner[1][1] = room[1][1];
+	if (check_wall_1(room[0], ocorner[1], prms, +1)
+		+ check_wall_1(ocorner[0], room[1], prms, -1) >= 3)
+		return (0);
+	if (check_wall_2(room[0], ocorner[0], prms, +1)
+		+ check_wall_2(ocorner[1], room[1], prms, -1) >= 3)
+		return (0);
+	return (1);
 }
 
 static int	check_space_ext(int c, int d,
@@ -101,5 +118,7 @@ int	check_space(unsigned int room[2][2], t_params *prms)
 		d = 0;
 		c++;
 	}
+	if (!check_interrupted(room, prms))
+		return (0);
 	return (1);
 }

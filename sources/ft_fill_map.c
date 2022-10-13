@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:43:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 18:26:07 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/12 19:28:44 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ void	ft_fill_map(t_params *prms)
 {
 	printf("%d\n", prms->size);
 	ft_outer_walls(prms);
-	if (prms->size <= 15)
-		ft_rooms(prms, 1);
-	else if (prms->size < 20)
-		ft_rooms(prms, 1 + rand() % 1);
-	else
-		ft_rooms(prms, 1 + rand() % ft_min(prms->size / 5, 10));
+	ft_rooms(prms, 3 + rand() % ft_min(prms->size / 5, 10));
 	ft_cleanup(prms);
 }

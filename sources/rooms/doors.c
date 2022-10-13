@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/28 16:33:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 18:05:51 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/12 21:35:54 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static void	ft_generate_door(unsigned int door[2], unsigned int room[2][2]
 	if (loc > (width * 2) + height)
 	{
 		door[0] = room[0][0];
-		door[1] = loc - (width * 2) + height -1;
+		door[1] = room[1][1] - (loc - (width * 2) - height -1);
 	}
 	else if (loc > width + height)
 	{
-		door[0] = room[0][0] + loc - width - height - 1;
+		door[0] = room[1][0] - (loc - width - height - 1);
 		door[1] = room[1][1];
 	}
 	else if (loc > width)
@@ -48,13 +48,17 @@ static int	ft_door_valid(t_params *prms, unsigned int room[2][2],
 	t = 0;
 	if (prms->map[door[0]][door[1]] == 'W')
 	{
-		if (prms->map[door[0] + 1][door[1]] == 'W')
+		if (prms->map[door[0] + 1][door[1]] == 'W'
+			|| prms->map[door[0] + 1][door[1]] == 'c')
 			t++;
-		if (prms->map[door[0] - 1][door[1]] == 'W')
+		if (prms->map[door[0] - 1][door[1]] == 'W'
+			|| prms->map[door[0] - 1][door[1]] == 'c')
 			t++;
-		if (prms->map[door[0]][door[1] + 1] == 'W')
+		if (prms->map[door[0]][door[1] + 1] == 'W'
+			|| prms->map[door[0]][door[1] + 1] == 'c')
 			t++;
-		if (prms->map[door[0]][door[1] - 1] == 'W')
+		if (prms->map[door[0]][door[1] - 1] == 'W'
+			|| prms->map[door[0]][door[1] - 1] == 'c')
 			t++;
 	}
 	if (t == 2)

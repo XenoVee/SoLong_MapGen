@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 16:03:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/05 18:20:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/12 21:21:47 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_setup_params(int argc, char **argv, t_params *prms)
 		ft_parse_args(argc, argv, prms);
 	if (prms->seed <= 0)
 		prms->seed = time(NULL) * getpid();
+	prms->seed = 140603499542592;
 	srand(prms->seed);
 	if (prms->x == 0)
 		prms->x = rand() % 20 + 10;
