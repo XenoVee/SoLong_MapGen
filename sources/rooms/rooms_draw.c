@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:53:04 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/10 16:54:05 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 15:45:32 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ static void	ft_draw_walls(t_params *prms, unsigned int room[2][2],
 {
 	if (prms->map[ix][iy] == '0')
 	{
-		if ((ix == room[0][0] || ix == room[1][0]) && (iy == room[0][1]
-			|| iy == room[1][1]))
-				prms->map[ix][iy] = 'c';
-		else if (ix == room[0][0] || ix == room[1][0]
+		if (ix == room[0][0] || ix == room[1][0]
 			|| iy == room[1][1] || iy == room[0][1])
 			prms->map[ix][iy] = 'W';
 	}
