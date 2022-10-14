@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 15:57:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 16:09:14 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 19:01:22 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_is_atoi(char *s)
 	{
 		if (ft_isdigit(s[i]) == 0)
 			return (0);
+		i++;
 	}
 	return (1);
 }

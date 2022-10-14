@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   draw_rock.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/19 18:04:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 16:28:39 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/14 15:47:45 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/14 16:48:31 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mapgen.h"
+#include "../../mapgen.h"
 
-void	leaks(void)
+void	draw_rock(t_params *prms, unsigned int rock[2])
 {
-	system("leaks -q mapgen");
-}
+	int	ix;
+	int	iy;
 
-int	main(int argc, char **argv)
-{
-	t_params	prms;
-
-	ft_setup_params(argc, argv, &prms);
-	prms.map = ft_create_map(&prms);
-	if (prms.map == NULL)
-		return (0);
-	ft_fill_map(&prms);
-	ft_print_map(&prms);
-	free_map(&prms, prms.x);
+	ix = -1;
+	iy = -1;
+	prms->map[rock[0]][rock[1]] = '1';
+	while (ix <= 1)
+	{
+		while (iy <= 1)
+		{
+			if ((ix == 0 || iy == 0) && rand() % 2 == 1)
+				prms->map[rock[0] + ix][rock[1] + iy] = '1';
+			iy++;
+		}
+		iy = 0;
+		ix++;
+	}
 }

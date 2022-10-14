@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/28 16:33:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 14:25:02 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/13 19:17:49 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static void	ft_put_door(t_params *prms, unsigned int room[2][2],
 	while (i < 2)
 	{
 		if (prms->map[door[0] + i][door[1]] != 'W')
-			prms->map[door[0] + i][door[1]] = 'T';
+			prms->map[door[0] + i][door[1]] = 'D';
 		if (prms->map[door[0]][door[1] + i] != 'W')
-			prms->map[door[0]][door[1] + i] = 'T';
+			prms->map[door[0]][door[1] + i] = 'D';
 		i++;
 	}
 }
