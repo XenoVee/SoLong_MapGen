@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:43:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 16:37:59 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/14 17:14:31 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void	ft_fill_map(t_params *prms)
 	ft_outer_walls(prms);
 	ft_rooms(prms, 3 + rand() % ft_min(prms->size / 5, 10));
 	ft_rocks(prms, 1 + rand() % (prms->size / 4));
+	ft_collectibles(prms, 1 + rand() % (prms->size / 10));
+	ft_player_exit(prms);
 	ft_cleanup(prms);
 }

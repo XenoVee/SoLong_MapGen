@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 15:56:43 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/14 17:16:04 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,7 @@ void	ft_draw_door(t_params *prms, unsigned int room[2][2]);
 int		check_space(unsigned int room[2][2], t_params *prms);
 void	ft_rocks(t_params *prms, unsigned int nrocks);
 void	draw_rock(t_params *prms, unsigned int rock[2]);
+void	ft_finalize(t_params *prms, char c, char f);
+void	ft_collectibles(t_params *prms, unsigned int ncoll);
+void	ft_player_exit(t_params prms);
 #endif

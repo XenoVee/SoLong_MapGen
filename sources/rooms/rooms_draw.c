@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:53:04 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 16:21:33 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/14 17:02:01 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,6 @@ static void	ft_draw_infill(t_params *prms, unsigned int room[2][2],
 			prms->map[ix][iy] = 'T';
 }
 
-void	ft_confirm_walls(t_params *prms)
-{
-	unsigned int	ix;
-	unsigned int	iy;
-
-	ix = 0;
-	iy = 0;
-	while (prms->map[ix])
-	{
-		while (prms->map[ix][iy])
-		{
-			if (prms->map[ix][iy] == 'W')
-				prms->map[ix][iy] = '1';
-			iy++;
-		}
-		ix++;
-		iy = 0;
-	}
-}
-
 void	ft_draw_room(unsigned int room[2][2], t_params *prms)
 {
 	int				f;
@@ -80,5 +60,5 @@ void	ft_draw_room(unsigned int room[2][2], t_params *prms)
 	}
 	if (f > 0)
 		ft_draw_door(prms, room);
-	ft_confirm_walls(prms);
+	ft_finalize(prms, 'W', '1');
 }
