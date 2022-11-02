@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 19:58:26 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 20:43:06 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "../libftprintf/libft.h"
 // # include <stddef.h>
 
 typedef struct s_params
