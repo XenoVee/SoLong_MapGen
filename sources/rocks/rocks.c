@@ -6,22 +6,31 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 19:24:05 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 16:43:37 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 20:25:23 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mapgen.h"
 
+void	set_limits(int *limx, int *limy, int *ix, int *iy)
+{
+	*ix = -1 - rand() % 2;
+	*iy = -1 - rand() % 2;
+	*limx = 3 + *ix;
+	*limy = 3 + *iy;
+}
+
 int	check_rock(t_params *prms, unsigned int rock[2])
 {
 	int	ix;
 	int	iy;
+	int	limy;
+	int	limx;
 
-	iy = -1;
-	ix = -1;
-	while (iy <= 1)
+	set_limits(&limx, &limy, &ix, &iy);
+	while (iy <= limy)
 	{
-		while (ix <= 1)
+		while (ix <= limx)
 		{
 			if (prms->map[ft_btw(rock[0] + ix, prms->x, 0)]
 				[ft_btw(rock[1] + iy, prms->y, 0)] == '1')

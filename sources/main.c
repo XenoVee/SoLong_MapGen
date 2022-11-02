@@ -6,16 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 18:04:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 16:28:39 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 20:38:26 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mapgen.h"
-
-void	leaks(void)
-{
-	system("leaks -q mapgen");
-}
 
 int	main(int argc, char **argv)
 {

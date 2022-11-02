@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/27 22:33:38 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 16:26:56 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 20:35:12 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ void	ft_rooms(t_params *prms, unsigned int nrooms)
 		l = 0;
 		while (l <= 0 && l >= -15)
 		{
-			printf("%d,%i\n", nrooms, l);
 			ft_generate_room(room, prms);
 			if (check_space(room, prms))
 				l = 2;
 			l--;
 		}
-		printf("nrooms: %d\n", nrooms);
 		if (l == 1)
 		{
 			ft_draw_room(room, prms);

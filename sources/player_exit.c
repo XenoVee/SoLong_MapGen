@@ -6,12 +6,12 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/14 17:15:13 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 17:15:58 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 19:57:19 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mapgen.h"
 
-void	ft_player_exit(t_params prms)
+void	ft_player_exit(t_params *prms)
 {
 }
